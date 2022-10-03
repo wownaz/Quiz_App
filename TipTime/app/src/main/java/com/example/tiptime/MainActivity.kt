@@ -1,3 +1,5 @@
+package com.example.tiptime
+
 import java.text.NumberFormat
 import com.example.tiptime.R
 
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.calculateButton.setOnClickListener{ calculateTip() }
     }
     fun calculateTip() {
         val stringInTextField = binding.costOfService.text.toString()
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
         var tip = tipPercentage*cost
         val roundUp = binding.roundUpSwitch.isChecked
-        if(roundUp==true){
+        if(roundUp){
             tip = kotlin.math.ceil(tip)
         }
         NumberFormat.getCurrencyInstance()
