@@ -1,3 +1,4 @@
+import java.text.NumberFormat
 import com.example.tiptime.R
 
 import com.example.tiptime.databinding.ActivityMainBinding
@@ -30,5 +31,8 @@ class MainActivity : AppCompatActivity() {
         if(roundUp==true){
             tip = kotlin.math.ceil(tip)
         }
+        NumberFormat.getCurrencyInstance()
+        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 }
