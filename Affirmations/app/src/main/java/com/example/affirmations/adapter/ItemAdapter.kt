@@ -22,11 +22,12 @@ class ItemAdapter(private val context: Context, private val dataset: List<Affirm
 
         return ItemViewHolder(adapterLayout)
     }
+
+    override fun onBindViewHolder(holder: ItemAdapter.ItemViewHolder, position: Int) {
+        val item = dataset[position]
+        holder.textView.text = context.resources.getString(item.stringResourceId)
+    }
 }
-//    override fun onBindViewHolder(holder: ItemAdapter.ItemViewHolder, position: Int) {
-//        val item = dataset[position]
-//        holder.textView.text =  context.resources.getString(item.stringResourceId)
-//    }
 //
 //    override fun getItemCount()= dataset.size
 //}
