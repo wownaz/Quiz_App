@@ -36,7 +36,7 @@ class GameWonFragment : Fragment() {
         // Add OnClick Handler for Next Match button
         binding.nextMatchButton.setOnClickListener{view: View->
             view.findNavController()
-                .navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(1))
+                .navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(1,1))
         }
         val args = GameWonFragmentArgs.fromBundle(requireArguments())
         Toast.makeText(context, "NumCorrect: ${args.numCorrect}, NumQuestions: ${args.numQuestions}", Toast.LENGTH_LONG).show()
