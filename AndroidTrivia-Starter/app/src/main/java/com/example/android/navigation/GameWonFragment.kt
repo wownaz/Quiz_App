@@ -35,7 +35,7 @@ class GameWonFragment : Fragment() {
         // Add OnClick Handler for Next Match button
         binding.nextMatchButton.setOnClickListener{view: View->
             view.findNavController()
-                .navigate(R.id.action_gameWonFragment_to_gameFragment)}
+                .navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment())}
         return binding.root
     }
 }
