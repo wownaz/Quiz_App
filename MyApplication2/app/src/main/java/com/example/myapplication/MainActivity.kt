@@ -1,13 +1,18 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.ui.dashboard.DashboardFragment
+import com.example.myapplication.ui.home.HomeFragment
+import com.example.myapplication.ui.notifications.NotificationsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,17 +24,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        replaceFragment(HomeFragment())
+        binding.navView.setOnItemSelectedListener {
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+            when(it.itemId){
+                R.id.navigation_day -> replaceFragment(HomeFragment())
+                R.id.navigation_week -> replaceFragment(DashboardFragment())
+                R.id.navigation_month -> replaceFragment(NotificationsFragment())
+                else ->{
+                }
+            }
+            true
+        }
+    }
+    private fun replaceFragment(fragment: Fragment){
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.linear_layout,fragment)
+        fragmentTransaction.commit()
+
     }
 }
