@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_home">Plan for today</string>
+    <string name="title_dashboard">Plan for a week</string>
+    <string name="title_notifications">Plan for a month</string>
+</resources>
