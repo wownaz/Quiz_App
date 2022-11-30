@@ -1,16 +1,19 @@
 package com.example.quizapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+
 
 class first : Fragment() {
 
@@ -25,6 +28,19 @@ class first : Fragment() {
         val nextButton = view.findViewById<Button>(R.id.nextButton)
         nextButton.setOnClickListener {
             findNavController().navigate(R.id.action_first_to_questions)
+
+
+            if(enter_name.text.toString().isEmpty())
+            {
+                Toast.makeText(this,"Enter Your Name", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                var intent = Intent(this,QuestionActivity::class.java)
+                intent.putExtra("${setData.name}",enter_name.text.toString())
+                startActivity(intent)
+                finish()
+            }
+
         }
         return view
     }
