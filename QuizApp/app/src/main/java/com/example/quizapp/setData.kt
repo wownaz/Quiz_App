@@ -10,53 +10,53 @@ object setData {
 
         var question1 = QuestionData(
             1,
-            "what is capital of India ?",
+            "What is my name?",
 
-            "Uttar Pradesh",
-            "Madhya Pradesh",
-            "Kanpur",
-            "New Delhi",
+            "Aruzhan",
+            "Neila",
+            "Shynar",
+            "Nazerke",
             4
         )
         var question2 = QuestionData(
             2,
-            "Who was the first Indian woman in Space ?",
+            "What is my surname",
 
-            "Kalpana Chawla",
-            "Sunita Williams",
-            "Koneru Humpy",
-            "None of the above",
+            "Yespolova",
+            "Amandolla",
+            "Yelubaeva",
+            "Nashkenova",
             1
         )
         var question3 = QuestionData(
             3,
-            "Who wrote the Indian National Anthem ?",
+            "What is my birthday?",
 
-            "Bakim Chandra Chatterji",
-            "Rabindranath Tagore",
-            "Swami Vivekanand",
-            "None of the above",
+            "18",
+            "25",
+            "28",
+            "7",
             2
         )
         var question4 = QuestionData(
             4,
-            "Who was the first President of India ?",
+            "Month of birth?",
 
-            "Abdul Kalam",
-            "Lal Bahadur Shastri",
-            "Dr. Rajendra Prasad",
-            "Zakir Hussain",
+            "September",
+            "October",
+            "December",
+            "November",
             3
         )
 
         var question5 = QuestionData(
             5,
-            "Who built the Jama Masjid ?",
+            "Who is my fav singer?",
 
-            "Jahangir",
-            "Akbar",
-            "Imam Bukhari",
-            "Shah Jahan",
+            "Selena",
+            "Taylor",
+            "The weeknd",
+            "Zayn",
             4
         )
 

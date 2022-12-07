@@ -1,48 +1,54 @@
 package com.example.quizapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.View
+import android.widget.Toast
 import com.example.quizapp.databinding.ActivityMainBinding
+import com.example.quizapp.setData.name
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var linearLayout: LinearLayout
     private lateinit var binding: ActivityMainBinding
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+//        binding = ActivityMainBinding(layoutInflater)
+//        setContentView(binding.root)
+        window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_FULLSCREEN
+        button.setOnClickListener {
+            val username = input.text.toString()
+            if(username.isEmpty())
+            {
+                Toast.makeText(this,"Enter Your Name",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                var intent = Intent(this,Question::class.java)
+                intent.putExtra("${setData.name}",input.text.toString())
+                startActivity(intent)
+                finish()
+            }
+            database = FirebaseDatabase.getInstance().getReference("Players")
+            val Player = Player(username)
+            database.child(username).setValue(Player).addOnSuccessListener {
+                Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show()
+
+            }.addOnFailureListener{
+                Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
+            }
+        }
 
 
 
     }
-
-
-//        @Suppress("UNUSED_VARIABLE")
-//        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-//        linearLayout = binding.lol
-//        val navController = this.findNavController(R.id.lol)
-//        NavigationUI.setupActionBarWithNavController(this,navController, linearLayout)
-//        NavigationUI.setupWithNavController(binding.fragmentContainerView, navController)
-//
-//    }
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = this.findNavController(R.id.fragmentContainerView)
-//        return NavigationUI.navigateUp(navController, linearLayout)
-//    }
-
-
-
 }
 
 

@@ -7,26 +7,33 @@ import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.quizapp.databinding.ActivityQuestionBinding
-
 import android.graphics.Typeface
+
 import android.util.Log
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
+import androidx.activity.viewModels
+import com.example.quizapp.setData.score
 import kotlinx.android.synthetic.main.activity_question.*
 
 
 class Question : AppCompatActivity() {
 
+//    private val viewModel: QuestionViewModel by viewModels()
+
+    private var questionList:ArrayList<QuestionData> ? = null
     private var Name:String?=null
     private var score:Int=0
-
     private var currentPosition:Int=1
-    private var questionList:ArrayList<QuestionData> ? = null
+//    private val questionList: ArrayList<QuestionData>?
     private var selecedOption:Int=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
@@ -60,11 +67,11 @@ class Question : AppCompatActivity() {
                 val question=questionList!![currentPosition-1]
                 if(selecedOption!=question.correct_ans)
                 {
-                    setColor(selecedOption,R.drawable.wrong_question_option)
+                    setColor(selecedOption,R.drawable.answer_wrong)
                 }else{
-                    score++;
+                    score++
                 }
-                setColor(question.correct_ans,R.drawable.correct_question_option)
+                setColor(question.correct_ans,R.drawable.answer_correct)
                 if(currentPosition==questionList!!.size)
                     submit.text="FINISH"
                 else
@@ -120,7 +127,7 @@ class Question : AppCompatActivity() {
         progress_text.text="${currentPosition}"+"/"+"${questionList!!.size}"
         question_text.text=question.question
         opt_1.text=question.option_one
-        opt_2.text=question.option_tw0
+        opt_2.text=question.option_two
         opt_3.text=question.option_three
         opt_4.text=question.option_four
 
@@ -136,7 +143,7 @@ class Question : AppCompatActivity() {
         for(op in optionList)
         {
             op.setTextColor(Color.parseColor("#555151"))
-            op.background=ContextCompat.getDrawable(this,R.drawable.question_option)
+            op.background=ContextCompat.getDrawable(this,R.drawable.options)
             op.typeface= Typeface.DEFAULT
         }
     }
@@ -145,9 +152,24 @@ class Question : AppCompatActivity() {
 
         setOptionStyle()
         selecedOption=opt
-        view.background=ContextCompat.getDrawable(this,R.drawable.selected_question_option)
+        view.background=ContextCompat.getDrawable(this,R.drawable.option_selected)
         view.typeface= Typeface.DEFAULT_BOLD
         view.setTextColor(Color.parseColor("#000000"))
 
     }
+
+//    override fun onDetach() {
+//        super.onDetach()
+//        Log.d("GameFragment", "GameFragment destroyed!")
+//    }
+
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        binding = GameFragmentBinding.inflate(inflater, container, false)
+//        Log.d("GameFragment", "GameFragment created/re-created!")
+//        return binding.root
+//    }
 }
