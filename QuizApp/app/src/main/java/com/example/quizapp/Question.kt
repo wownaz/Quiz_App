@@ -158,18 +158,5 @@ class Question : AppCompatActivity() {
 
     }
 
-//    override fun onDetach() {
-//        super.onDetach()
-//        Log.d("GameFragment", "GameFragment destroyed!")
-//    }
 
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = GameFragmentBinding.inflate(inflater, container, false)
-//        Log.d("GameFragment", "GameFragment created/re-created!")
-//        return binding.root
-//    }
 }

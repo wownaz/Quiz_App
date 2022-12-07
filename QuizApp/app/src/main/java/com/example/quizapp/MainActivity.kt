@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.quizapp.databinding.ActivityMainBinding
 import com.example.quizapp.setData.name
+import com.example.quizapp.setData.score
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_FULLSCREEN
         button.setOnClickListener {
             val username = input.text.toString()
+            val score = intent.getStringExtra(setData.score)
             if(username.isEmpty())
             {
                 Toast.makeText(this,"Enter Your Name",Toast.LENGTH_SHORT).show()
@@ -36,14 +38,14 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-            database = FirebaseDatabase.getInstance().getReference("Players")
-            val Player = Player(username)
-            database.child(username).setValue(Player).addOnSuccessListener {
-                Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show()
-
-            }.addOnFailureListener{
-                Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
-            }
+//            database = FirebaseDatabase.getInstance().getReference("Players")
+//            val Player = Player(username, score)
+//            database.child(username).setValue(Player).addOnSuccessListener {
+//                Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show()
+//
+//            }.addOnFailureListener{
+//                Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
+//            }
         }
 
 
