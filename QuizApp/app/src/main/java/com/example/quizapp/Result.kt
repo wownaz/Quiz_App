@@ -36,6 +36,10 @@ class Result : AppCompatActivity() {
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
+        button2.setOnClickListener{
+            startActivity(Intent(this,PlayerListActivity::class.java))
+            finish()
+        }
 
     }
 }
