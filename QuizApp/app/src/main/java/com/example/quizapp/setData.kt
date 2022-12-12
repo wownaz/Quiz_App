@@ -10,53 +10,53 @@ object setData {
 
         var question1 = QuestionData(
             1,
-            "What is my name?",
+            "How much bigger is the sun than the earth",
 
-            "Aruzhan",
-            "Neila",
-            "Shynar",
-            "Nazerke",
+            "200000",
+            "250000",
+            "290000",
+            "300000",
             4
         )
         var question2 = QuestionData(
             2,
-            "What is my surname",
+            "The hottest planet of our planet ?",
 
-            "Yespolova",
-            "Amandolla",
-            "Yelubaeva",
-            "Nashkenova",
+            "Venus",
+            "Mercury",
+            "Mars",
+            "Jupiter",
             1
         )
         var question3 = QuestionData(
             3,
-            "What is my birthday?",
+            "When the first artificial Earth satellite launched?",
 
-            "18",
-            "25",
-            "28",
-            "7",
+            "1961",
+            "1957",
+            "1956",
+            "1948",
             2
         )
         var question4 = QuestionData(
             4,
-            "Month of birth?",
+            "Try to guess the planet"+"\n"+"1 day on which lasts 243 earth days, and the year is only 225",
 
-            "September",
-            "October",
-            "December",
-            "November",
+            "Mars",
+            "Mercury",
+            "Venus",
+            "Saturn",
             3
         )
 
         var question5 = QuestionData(
             5,
-            "Who is my fav singer?",
+            "Try to guess the planet"+"\n"+"1 year at ... lasts 248 earth years",
 
-            "Selena",
-            "Taylor",
-            "The weeknd",
-            "Zayn",
+            "Uranium",
+            "Neptune",
+            "Saturn",
+            "Pluto",
             4
         )
 

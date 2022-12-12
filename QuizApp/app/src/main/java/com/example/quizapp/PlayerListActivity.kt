@@ -3,11 +3,13 @@ package com.example.quizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.google.firebase.firestore.auth.User
+import kotlinx.android.synthetic.main.activity_user_list.*
 
 class PlayerListActivity : AppCompatActivity() {
 
@@ -24,6 +26,11 @@ class PlayerListActivity : AppCompatActivity() {
 
         userArrayList = arrayListOf<Player>()
         getUserData()
+
+        button3.setOnClickListener{
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
     }
     private fun getUserData() {
 
@@ -44,5 +51,8 @@ class PlayerListActivity : AppCompatActivity() {
         })
 
     }
+
+
+
 
 }
